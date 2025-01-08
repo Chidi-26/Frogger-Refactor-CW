@@ -1,8 +1,7 @@
 package View;
 import com.lagocp.gameEngine.sprite.Sprite;
 import com.lagocp.gameEngine.ui.UI;
-import com.lagocp.sprites.Car;
-import com.lagocp.sprites.Frog;
+
 
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -72,12 +71,12 @@ public class FroggerUI extends UI {
     @Override
     public void updateUI(Sprite... sprites) {
         for (Sprite sprite : sprites) {
-            if (sprite instanceof Frog) {
+            if (sprite instanceof View.Frog) {
                 froggerStats.setText("Frog: (" + sprite.getX() + ", " + sprite.getY() + ")\n" + "Center: ("
                         + sprite.getCenterX() + ", " + sprite.getCenterY() + ")\n" + "vX: " + sprite.getvX() + " - vY: "
                         + sprite.getvY() + "\nWidth: " + sprite.getWidth() + "\nHeight: " + sprite.getHeight()
                         + "\nHalfWidth: " + sprite.getHalfWidth() + "\nHalfHeight: " + sprite.getHalfHeight());
-            } else if (sprite instanceof Car) {
+            } else if (sprite != null) {
                 carStats.setText("Car: (" + sprite.getX() + ", " + sprite.getY() + ")\n" + "Center: ("
                         + sprite.getCenterX() + ", " + sprite.getCenterY() + ")\n" + "vX: " + sprite.getvX() + " - vY: "
                         + sprite.getvY() + "\nWidth: " + sprite.getWidth() + "\nHeight: " + sprite.getHeight()

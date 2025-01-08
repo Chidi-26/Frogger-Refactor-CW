@@ -1,16 +1,12 @@
-import Model.Animal;
-import Model.BackgroundImage;
+import Model.*;
 import View.MyStage;
+import Model.Obstacle;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
 	AnimationTimer timer;

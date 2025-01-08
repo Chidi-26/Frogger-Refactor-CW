@@ -2,7 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-import View.Obstacle;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
