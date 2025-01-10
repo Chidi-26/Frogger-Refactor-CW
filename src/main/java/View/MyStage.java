@@ -1,6 +1,7 @@
 package View;
 
 import java.io.File;
+import java.util.Objects;
 
 import Model.World;
 import javafx.scene.media.Media;
@@ -28,13 +29,13 @@ public class MyStage extends World {
 //		});
 //		mediaPlayer.play();
 	}
-	
+
 	public void playMusic() {
-		String musicFile = "Snake_Charmer.mp3";
-		Media sound = new Media(new File(musicFile).toURI().toString());
+		String musicFile = Objects.requireNonNull(getClass().getResource("/Snake_Charmer.mp3")).toExternalForm();
+		Media sound = new Media(musicFile);
 		mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-	    mediaPlayer.play();
+		mediaPlayer.play();
 	}
 	
 	public void stopMusic() {

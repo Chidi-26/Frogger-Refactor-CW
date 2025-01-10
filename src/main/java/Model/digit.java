@@ -12,7 +12,7 @@ public class digit extends Actor{
 	}
 	
 	public digit(int n, int dim, int x, int y) {
-		im1 = new Image("file:src/p4_group_8_repo/"+n+".png", dim, dim, true, true);
+		im1 = new Image("/"+n+".png", dim, dim, true, true);
 		setImage(im1);
 		setX(x);
 		setY(y);
