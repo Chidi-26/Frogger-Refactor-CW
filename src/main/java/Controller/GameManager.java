@@ -8,23 +8,43 @@ import javafx.scene.control.Alert;
 
 import java.util.Objects;
 
+/**
+ * {@code GameManager} class follows the singleton design pattern and essentially manages the in game logic
+ */
 public class GameManager {
     private final MyStage background;
     private AnimationTimer timer;
     private final InitGame initGame;
     private static GameManager gmInstance;
 
+    /**
+     *  Private constructor
+     * @param background - plays the background music
+     * @param initGame - initializes every element of the game
+     */
+
     private GameManager(MyStage background, InitGame initGame) {
         this.background = background;
         this.initGame = initGame;
 
     }
+
+    /**
+     * {@code GameManager} method gets the singleton instance from the {@code GameManager} class while also creating one if it doesn't already exsist
+     * @param background - plays the background music
+     * @param initGame - initializes every element of the game
+     * @return the singleton instance of the {@code GameManager} class
+     */
     public static GameManager getGmInstance(MyStage background, InitGame initGame){
         if(gmInstance == null){
             gmInstance = new GameManager(background, initGame);
         }
         return gmInstance;
     }
+
+    /**
+     * {@code createTimer} method that creates a timer and checks if the game has ended
+     */
     public void createTimer() {
         var frog = initGame.frog;
         timer = new AnimationTimer() {
@@ -44,6 +64,9 @@ public class GameManager {
         };
     }
 
+    /**
+     * {@code displayWinningMessage} method displays a message once the player has won the game
+     */
     private void displayWinningMessage(){
         var frog = initGame.frog;
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -52,18 +75,27 @@ public class GameManager {
         alert.setContentText("Highest Possible Score: 800");
         alert.show();
     }
-    //plays the music and starts timer
+
+    /**
+     * {@code start} method begins to play the background music and starts the timer
+     */
     public void start() {
         background.playMusic();
         createTimer();
         timer.start();
     }
 
-    //stops timer
+    /**
+     * {@code stop} method stops the timer
+     */
     public void stop() {
         timer.stop();
     }
 
+    /**
+     * {@code setNumber} method updates the score attained from the player
+     * @param n - the current score attained by the player
+     */
     public void setNumber(int n) {
         int shift = 0;
         while (n < 0) {
