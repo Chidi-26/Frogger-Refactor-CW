@@ -24,7 +24,7 @@ public class Main extends Application {
 		background = new MyStage(); //initialising stage
 		Scene scene  = new Scene(background,600,800); //creating stage dimension
 
-		initialiseGame = new InitGame(background);
+		initialiseGame =  InitGame.getIgInstance(background);
 		gameManager = GameManager.getGmInstance(background, initialiseGame);
 
 		initialiseGame.initElements();

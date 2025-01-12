@@ -4,26 +4,56 @@ import Model.*;
 import View.BackgroundImage;
 import View.MyStage;
 
+/**
+ * InitGame class setts up and initializes all the game elements and adds them to the background
+ */
 public class InitGame {
 
-    private final MyStage background;
+    private final MyStage background; // game background
     Animal frog;
+    private static InitGame igInstance; //singleton instance for the current InitGame class
 
-    public InitGame(MyStage background){
+
+    /**
+     * Constructor to initialize the game background
+     * @param background - MyStage component that sets up the background
+     */
+    private InitGame(MyStage background){
         this.background = background;
     }
 
+    /**
+     * Creates a singleton instance
+     * @param background - MyStage component that sets up the background
+     * @return instance
+     */
+    public static InitGame getIgInstance(MyStage background){
+        if(igInstance == null){
+            igInstance = new InitGame(background);
+        }
+        return igInstance;
+    }
+
+    /**
+     * Method that initializes all the background elements
+     */
     public void initElements(){
         settingBackground(); //Sets up all the elements in the background
         settingObstacles(); //Sets up obstacles in the background
         settingFrog(); //sets up frog
     }
 
+    /**
+     * Method that sets up frog and adds it to the background
+     */
     public void settingFrog() {
         frog = new Animal("/froggerUp.png");
         background.add(frog);
     }
 
+    /**
+     * Method that sets up obstacles and adds them to the background
+     */
     private void settingObstacles() {
         //sets up truck and car obstacles
         background.add(new Obstacle("/truck1"+"Right.png", 0, 649, 1, 120, 120));
@@ -44,6 +74,9 @@ public class InitGame {
 
     }
 
+    /**
+     * Method that sets up and add background elements to the game
+     */
     private void settingBackground() {
         //Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
         //Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
