@@ -12,11 +12,18 @@ public class GameManager {
     private final MyStage background;
     private AnimationTimer timer;
     private final InitGame initGame;
+    private static GameManager gmInstance;
 
-    public GameManager(MyStage background, InitGame initGame) {
+    private GameManager(MyStage background, InitGame initGame) {
         this.background = background;
         this.initGame = initGame;
 
+    }
+    public static GameManager getGmInstance(MyStage background, InitGame initGame){
+        if(gmInstance == null){
+            gmInstance = new GameManager(background, initGame);
+        }
+        return gmInstance;
     }
     public void createTimer() {
         var frog = initGame.frog;

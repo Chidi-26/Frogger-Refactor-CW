@@ -84,7 +84,7 @@ public class Animal extends Actor {
 
 	/**
 	 * Handles key released logic
-	 * @param event triggered by user
+	 * @param event - triggered by user
 	 */
 	private void releasedKey(KeyEvent event){
 		var code = event.getCode();
