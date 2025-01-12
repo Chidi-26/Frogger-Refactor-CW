@@ -1,12 +1,10 @@
 package Controller;
 
-import Model.Animal;
 import Model.digit;
 import View.MyStage;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 
-import java.util.Objects;
 
 /**
  * {@code GameManager} class follows the singleton design pattern and essentially manages the in game logic

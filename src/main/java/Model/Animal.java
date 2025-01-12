@@ -2,8 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-import javafx.event.EventHandler;
-
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
