@@ -14,13 +14,13 @@ import javafx.scene.input.KeyEvent;
 public class Animal extends Actor {
 	Image imgW1, imgA1, imgS1, imgD1, imgW2, imgA2, imgS2, imgD2;
 
-	int lives = 10;
+	private int lives = 10;
 	private boolean frogDeath = false;
-	int points = 0;
-	int end = 0;
-	int imgSize = 40;
-	int carD = 0;
-	double w = 800;
+	private int points = 0;
+	public int end = 0;
+	private int imgSize = 40;
+	private int carD = 0;
+	private double w = 800;
 
 	private boolean second = false;
 	boolean noMove = false;
