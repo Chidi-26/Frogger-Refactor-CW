@@ -310,36 +310,5 @@ public class Animal extends Actor {
 		return false; //returns false if no change has been made
 
 	}
-	public Image getUpPic() {
-		return imgW1;
-	}
-
-	public Image getLeftPic() {
-		return imgA1;
-	}
-
-	public Image getDownPic() {
-		return imgS1;
-	}
-
-	public Image getRightPic() {
-		return imgD1;
-	}
-
-	public Image getUpJumpPic() {
-		return imgW2;
-	}
-
-	public Image getLeftJumpPic() {
-		return imgA2;
-	}
-
-	public Image getDownJumpPic() {
-		return imgS2;
-	}
-
-	public Image getRightJumpPic() {
-		return imgD2;
-	}
 
 }
