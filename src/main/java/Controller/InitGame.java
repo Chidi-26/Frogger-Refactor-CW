@@ -3,6 +3,11 @@ package Controller;
 import Model.*;
 import View.BackgroundImage;
 import View.MyStage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.awt.*;
+import java.util.Objects;
 
 /**
  * InitGame class setts up and initializes all the game elements and adds them to the background
