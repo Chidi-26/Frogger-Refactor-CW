@@ -81,8 +81,8 @@ Sets up the game environment, including the background, obstacles, and frog.
 
     
 **Credits**
-Developer: Chidi Ikwunze
-Design inspiration: https://projects.cs.nott.ac.uk/2024-comp2013/frogger-refactor-coursework
+- Developer: Chidi Ikwunze
+- Design inspiration: https://projects.cs.nott.ac.uk/2024-comp2013/frogger-refactor-coursework
 
 
 
