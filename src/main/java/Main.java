@@ -41,6 +41,7 @@ public class Main extends Application {
 
 		//sets scene and primary stage
 		primaryStage.setScene(scene);
+		primaryStage.setTitle("You Have 10 Lives!");
 		primaryStage.show();
 		gameManager.start(); //starts the application
 	}

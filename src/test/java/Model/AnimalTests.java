@@ -21,6 +21,7 @@ public class AnimalTests {
         frog = new Animal("/froggerUp.png");
         frog.setY(100);
         frog.setX(100);
+        frog.setLives(8);
 
     }
     @Test
@@ -50,6 +51,34 @@ public class AnimalTests {
         assertTrue(frog.getStop(), "Game stops when the frog reaches all end points");
     }
 
+
+    /**
+     * New feature Tests from here onwards
+     */
+    @Test
+    void testStartingLives(){
+        assertEquals(8, frog.getLives(), "Assuring that the right amount of lives have been set");
+    }
+
+    @Test
+    void testLiveLoss(){
+        frog.liveLost();
+        assertEquals(7, frog.getLives(), "Checking if life loss logic is implemented");
+    }
+
+    @Test
+    void testLivesFinish(){
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        frog.liveLost();
+        assertTrue(frog.frogLivesFinished(), "Ensures that game ends meaning that frog lives is 0");
+        assertEquals(0, frog.getLives(), "Ensuring that frog lives is 0");
+    }
 
 
 }

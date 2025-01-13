@@ -51,15 +51,52 @@ public class GameManager {
                 if (frog.changeScore()) {
                     setNumber(frog.getPoints());
                 }
+                if(frog.isFrogDead()){
+                    handlesLifeLoss();
+                }
                 if (frog.getStop()) {
-                    System.out.print("STOPP:");
-                    background.stopMusic();
-                    GameManager.this.stop();
-                    background.stop();
+                   finishingLogic();
                    displayWinningMessage();
+                }
+                if(frog.frogLivesFinished()){
+                    finishingLogic();
+                    displaysLivesFinishedMessage();
                 }
             }
         };
+    }
+
+    /**
+     * {@code handlesLifeLoss} method handles logic for when the player loses a life
+     */
+    public void handlesLifeLoss(){
+        var frog = initGame.frog;
+        if(frog.getLives() > 0){
+            frog.liveLost();
+            frog.resetFrogAfterDeath();
+        }
+    }
+
+    /**
+     * {@code finishingLogic} method stops the game and its music from running
+     */
+    public void finishingLogic(){
+        System.out.print("STOPP:");
+        background.stopMusic();
+        GameManager.this.stop();
+        background.stop();
+    }
+
+    /**
+     * {@code displaysLivesFinishedMessage} method displays shows that the game is over once all the player's lives has been lost
+     */
+    public void displaysLivesFinishedMessage(){
+        var frog = initGame.frog;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over!!");
+        alert.setHeaderText("You Have Lost All Your Lives! ");
+        alert.setContentText("Finishing Score: " + frog.getPoints() + "/800");
+        alert.show();
     }
 
     /**

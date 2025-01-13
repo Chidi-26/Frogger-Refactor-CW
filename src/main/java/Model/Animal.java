@@ -14,6 +14,8 @@ import javafx.scene.input.KeyEvent;
 public class Animal extends Actor {
 	Image imgW1, imgA1, imgS1, imgD1, imgW2, imgA2, imgS2, imgD2;
 
+	int lives = 10;
+	private boolean frogDeath = false;
 	int points = 0;
 	int end = 0;
 	int imgSize = 40;
@@ -76,10 +78,7 @@ public class Animal extends Actor {
 	 */
 	private void pressedKey(KeyEvent event){
 		var code = event.getCode();
-		if(noMove){
-
-		}
-		if (second) {
+        if (second) {
 				doMove(code, imgW1, imgA1, imgS1, imgD1);
 					changeScore = false;
 					second = false;
@@ -95,9 +94,8 @@ public class Animal extends Actor {
 	 */
 	private void releasedKey(KeyEvent event){
 		var code = event.getCode();
-		if (noMove) {}
 
-			if (event.getCode() == KeyCode.W && getY() < w) {
+        if (event.getCode() == KeyCode.W && getY() < w) {
 				changeScore = true;
 				w = getY();
 				points += 10;
@@ -146,9 +144,7 @@ public class Animal extends Actor {
 	public void act(long now) {
 		checkBoundaries();
 		carDeathHandled(now);
-
 		waterDeathHandled(now);
-
 		collisionHandled();
 	}
 
@@ -224,6 +220,7 @@ public class Animal extends Actor {
 	 * {@code resetFrogAfterDeath} method resets frog after it dies from either being hit by a car or drowning in the weater
 	 */
 	public void resetFrogAfterDeath() {
+		liveLost();
 		resetFrog();
 		waterDeath = false;
 		carDeath = false;
@@ -297,7 +294,7 @@ public class Animal extends Actor {
 	}
 
 	/**
-	 * {@code chageScore} method checks whether the score has changed
+	 * {@code changeScore} method checks whether the score has changed
 	 * If it has changed it then resets the variable flag to false, saving the changes
 	 * @return true if there has been a change in score and false if otherwise
 	 */
@@ -309,6 +306,48 @@ public class Animal extends Actor {
 		}
 		return false; //returns false if no change has been made
 
+	}
+
+	/**
+	 * {@code getLives} is a getter method to return number of lives
+	 * @return lives
+	 */
+	public int getLives(){
+		return lives;
+	}
+
+	/**
+	 * {@code setLives} sets the amount of lives the frog has
+	 * @param lives - sets the lives variable to the imputed lives from the argument in the method
+	 */
+	public void setLives(int lives){
+		this.lives = lives;
+	}
+
+	/**
+	 * {@code isFrogDead} method checks whether the frog is dead or not
+	 * @return returns false if frog isn't dead otherwise it returns true
+	 */
+	public boolean isFrogDead(){
+		return frogDeath;
+	}
+
+	/**
+	 * {@code liveLost} method handles when the frog dies and loses a life
+	 */
+	public void liveLost(){
+		if(lives > 0){
+			lives--;
+		}
+		frogDeath = false;
+	}
+
+	/**
+	 * {@code frogLivesFinished} method ensures that the game ends once the frog lives hits 0
+	 * @return lives and sets it to 0
+	 */
+	public boolean frogLivesFinished(){
+		return lives == 0;
 	}
 
 }
