@@ -11,16 +11,19 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.Scene.*;
-import javafx.beans.value.*;
 
 
+/**
+ * {@code World} is an abstract class that extends JavaFX {@code Pane} and it represents the game world
+ * Acts as a container to contain all the game elements
+ */
 public abstract class World extends Pane {
     private AnimationTimer t;
-    
+
+    /**
+     * Constructor that handles keys being presses and released while relating them to the actors and scene
+     */
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -66,6 +69,9 @@ public abstract class World extends Pane {
 		});
     }
 
+    /**
+     * {@code createTimer} method creates a timer that updates the world and everything in it
+     */
     public void createTimer() {
         t = new AnimationTimer() {
             @Override
@@ -81,22 +87,37 @@ public abstract class World extends Pane {
         };
     }
 
+    /**
+     * {@code start} method starts the timer and starts the game
+     */
     public void start() {
     	createTimer();
         t.start();
     }
 
+    /**
+     * {@code stop} method stops the game by stopping the timer
+     */
     public void stop() {
-        t.stop();
+        if(t != null){
+            t.stop();
+        }
     }
-    
+
+    /**
+     * {@code add} method adds the actor to the world
+     * @param actor - current actor that is being added to the world
+     */
     public void add(Actor actor) {
         getChildren().add(actor);
     }
 
-    public void remove(Actor actor) {
-        getChildren().remove(actor);
-    }
+    /**
+     * {@code getObjects} is a getter method that retries the list of specific class that is in the world
+     * @param cls - class type of objects
+     * @return list of the object of a specified class
+     * @param <A> - Type of object that is being gotten
+     */
 
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();
@@ -108,5 +129,9 @@ public abstract class World extends Pane {
         return someArray;
     }
 
+    /**
+     * Abstract method that each in game time tick, defines the behaviour of the world
+     * @param now - represents present time
+     */
     public abstract void act(long now);
 }

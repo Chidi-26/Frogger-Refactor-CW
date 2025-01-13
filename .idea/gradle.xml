@@ -9,6 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/External" />
+            <option value="$PROJECT_DIR$/External/Game-Engine" />
           </set>
         </option>
       </GradleProjectSettings>
