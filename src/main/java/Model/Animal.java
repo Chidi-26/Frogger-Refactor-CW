@@ -43,6 +43,15 @@ public class Animal extends Actor {
 		setX(300);
 		setY(679.8+movement);
 
+		initFroggerImages();
+
+		settingUpKeyHandlers();
+	}
+
+	/**
+	 * {@code initFroggerImages} method sets up and initializes the different frog images
+	 */
+	public void initFroggerImages(){
 		imgW1 = new Image("/froggerUp.png", imgSize, imgSize, true, true);
 		imgA1 = new Image("/froggerLeft.png", imgSize, imgSize, true, true);
 		imgS1 = new Image("/froggerDown.png", imgSize, imgSize, true, true);
@@ -51,9 +60,6 @@ public class Animal extends Actor {
 		imgA2 = new Image("/froggerLeftJump.png", imgSize, imgSize, true, true);
 		imgS2 = new Image("/froggerDownJump.png", imgSize, imgSize, true, true);
 		imgD2 = new Image("/froggerRightJump.png", imgSize, imgSize, true, true);
-
-
-		settingUpKeyHandlers();
 	}
 
 	/**
@@ -303,6 +309,37 @@ public class Animal extends Actor {
 		}
 		return false; //returns false if no change has been made
 
+	}
+	public Image getUpPic() {
+		return imgW1;
+	}
+
+	public Image getLeftPic() {
+		return imgA1;
+	}
+
+	public Image getDownPic() {
+		return imgS1;
+	}
+
+	public Image getRightPic() {
+		return imgD1;
+	}
+
+	public Image getUpJumpPic() {
+		return imgW2;
+	}
+
+	public Image getLeftJumpPic() {
+		return imgA2;
+	}
+
+	public Image getDownJumpPic() {
+		return imgS2;
+	}
+
+	public Image getRightJumpPic() {
+		return imgD2;
 	}
 
 }
