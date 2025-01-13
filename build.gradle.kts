@@ -11,8 +11,6 @@ repositories {
     mavenCentral()
 }
 
-val mockitoAgent = configurations.create("mockitoAgent")
-
 dependencies {
     implementation(project(":External:Game-Engine"))
     implementation("org.openjfx:javafx-media:20.0.2")
@@ -26,12 +24,11 @@ dependencies {
     testImplementation("com.pholser:junit-quickcheck-core:1.0")
     testImplementation("com.pholser:junit-quickcheck-generators:1.0")
     testImplementation("org.mockito:mockito-core:5.14.+")
-    mockitoAgent("org.mockito:mockito-core:5.14.+") { isTransitive = false }
+
 }
 
 tasks.test {
     useJUnitPlatform()
-    jvmArgs("-javaagent:${mockitoAgent.asPath}")
 }
 
 application {
